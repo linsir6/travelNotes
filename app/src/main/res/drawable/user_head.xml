@@ -1,0 +1,18 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 描边 -->
+    <stroke
+        android:width="3dp"
+        android:color="#FFF"
+
+        />
+
+    <!-- 圆角 -->
+    <corners android:radius="4dp"/>
+
+
+
+    <solid
+        android:color="#FFF"/>
+
+</shape>

@@ -77,8 +77,6 @@ public class RaidersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     private void bindView(AllAddressAdapterViewHolder holder, RaidersModel data) throws IOException {
 
-        holder.title.setText(data.getTitle());
-        holder.count.setText(data.getCount());
         //在这里用图片加载库，将背景图片和用户头像更换就可以
     }
 
@@ -97,8 +95,6 @@ public class RaidersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         public AllAddressAdapterViewHolder(View itemView) {
             super(itemView);
-            title = (TextView) itemView.findViewById(R.id.title);
-            count = (TextView) itemView.findViewById(R.id.count);
             img = (ImageView) itemView.findViewById(R.id.image);
 
         }

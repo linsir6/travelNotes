@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +24,7 @@ public class RaidersFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private RaidersAdapter adapter;
-    private GridLayoutManager gridLayoutManager;
+    private LinearLayoutManager linearLayoutManager;
 
     @Nullable
     @Override
@@ -51,9 +52,9 @@ public class RaidersFragment extends Fragment {
         lists.add(a2);
         lists.add(a3);
 
-        gridLayoutManager = new GridLayoutManager(getActivity(), 2);
-//        linearLayoutManager.setOrientation(OrientationHelper.VERTICAL);
-        recyclerView.setLayoutManager(gridLayoutManager);
+        linearLayoutManager = new LinearLayoutManager(getActivity());
+
+        recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adapter);
         adapter.refreshList(lists);
 

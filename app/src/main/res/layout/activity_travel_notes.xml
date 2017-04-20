@@ -4,6 +4,29 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:layout_marginLeft="12dp"
+            android:gravity="center"
+            android:text="蝉-游记"
+            android:textColor="#000"
+            android:textSize="18sp"
+            />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dfdfdf"
+        />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -24,7 +47,8 @@
                     android:id="@+id/background"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#000"
+                    android:src="@drawable/img15"
+                    android:scaleType="fitXY"
                     />
 
                 <TextView
@@ -70,6 +94,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/date2"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"
@@ -95,6 +120,7 @@
                 />
 
            <ImageView
+               android:id="@+id/img1"
                android:layout_width="match_parent"
                android:layout_height="180dp"
                android:src="@drawable/img15"
@@ -111,25 +137,14 @@
                 />
 
             <TextView
+                android:id="@+id/text2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="12dp"
                 android:text="张家界市境内溪河纵横，水系以澧水和溇水为主，澧水干流在桑植县南岔以上有北、中、南三源。北源为主干，发源于桑植县杉木界；中源出八大公山东麓；南源出永顺县龙家寨，三源在龙江口汇合后往南经桑植县、永定区、慈利县等河流最后流入洞庭湖，干流流贯张家界市的长度是313公里，流域面积8135平方公里"
                 android:textSize="16sp"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_margin="8dp"
-                android:background="#dfdfdf"
-                />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:text="张家界市境内溪河纵横，水系以澧水和溇水为主，澧水干流在桑植县南岔以上有北、中、南三源。北源为主干，发源于桑植县杉木界；中源出八大公山东麓；南源出永顺县龙家寨，三源在龙江口汇合后往南经桑植县、永定区、慈利县等河流最后流入洞庭湖，干流流贯张家界市的长度是313公里，流域面积8135平方公里"
-                android:textSize="16sp"/>
 
             <TextView
                 android:layout_width="match_parent"

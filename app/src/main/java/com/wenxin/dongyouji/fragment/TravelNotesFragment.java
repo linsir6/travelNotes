@@ -113,18 +113,6 @@ public class TravelNotesFragment extends Fragment {
             intent.putExtra("img1",mList.get(position).getImg1());
             intent.putExtra("text2",mList.get(position).getText2());
 
-
-
-
-
-
-
-
-
-
-
-
-
             startActivity(intent);
         }
     };

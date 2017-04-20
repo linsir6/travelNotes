@@ -1,43 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="160dp"
-              android:layout_height="220dp"
-              android:layout_margin="8dp">
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+    >
 
-    <RelativeLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="4dp"
+        >
 
-        <ImageView
-            android:id="@+id/image"
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/img15"
-            />
+            android:layout_margin="4dp"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:text="日本\nJAPAN"
-            android:textColor="#FFF"
-            android:textSize="20sp"
-            />
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:background="@drawable/img15"/>
 
-        <TextView
-            android:id="@+id/count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="24dp"
-            android:text="1010旅行地"
-            android:textColor="#FFF"
-            android:textSize="20sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:textColor="#262626"
+                android:textSize="18sp"
+                android:text="东京速览"/>
 
-    </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="初行东京必读的旅游手册"
+                android:layout_marginTop="8dp"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:layout_marginBottom="12dp"
+                />
+
+
+        </LinearLayout>
+
+
+
+
+
+    </android.support.v7.widget.CardView>
+
+
 
 
 </LinearLayout>

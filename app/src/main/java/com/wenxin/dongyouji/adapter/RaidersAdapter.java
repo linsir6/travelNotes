@@ -1,5 +1,6 @@
 package com.wenxin.dongyouji.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +9,9 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.wenxin.dongyouji.R;
+import com.wenxin.dongyouji.Url;
 import com.wenxin.dongyouji.model.RaidersModel;
 
 import java.io.IOException;
@@ -27,8 +30,10 @@ public class RaidersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     private ProgressBar mProgress;
     private TextView mNoMore;
+    private Context mContext;
 
-    public RaidersAdapter() {
+    public RaidersAdapter(Context context) {
+        mContext = context;
         dataList = new ArrayList<>();
     }
 
@@ -77,6 +82,18 @@ public class RaidersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     private void bindView(AllAddressAdapterViewHolder holder, RaidersModel data) throws IOException {
 
+        holder.title.setText(data.getTitle());
+        holder.description.setText(data.getDescription());
+
+        String url = Url.url + "static/images/" + data.getBackground();
+        Picasso
+                .with(mContext)
+                .load(url)
+                .fit()
+                .centerCrop()
+                .into(holder.img);
+
+
         //在这里用图片加载库，将背景图片和用户头像更换就可以
     }
 
@@ -89,12 +106,14 @@ public class RaidersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public static class AllAddressAdapterViewHolder extends RecyclerView.ViewHolder {
 
         private TextView title;
-        private TextView count;
+        private TextView description;
         private ImageView img;
 
 
         public AllAddressAdapterViewHolder(View itemView) {
             super(itemView);
+            title = (TextView) itemView.findViewById(R.id.title);
+            description = (TextView) itemView.findViewById(R.id.description);
             img = (ImageView) itemView.findViewById(R.id.image);
 
         }

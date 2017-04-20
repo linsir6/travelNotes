@@ -105,6 +105,11 @@ public class TravelNotesFragment extends Fragment {
     private RecyclerItemClickListener.OnItemClickListener onItemClickListener = new RecyclerItemClickListener.OnItemClickListener() {
         @Override
         public void onItemClick(View view, int position) {
+
+            if (position == mList.size()){
+                return;
+            }
+
             Intent intent = new Intent(getActivity(), TravelNotesActivity.class);
             intent.putExtra("title", mList.get(position).getTitle());
             intent.putExtra("date",mList.get(position).getDate());

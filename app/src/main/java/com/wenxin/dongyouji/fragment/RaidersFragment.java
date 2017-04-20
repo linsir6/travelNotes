@@ -1,5 +1,6 @@
 package com.wenxin.dongyouji.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,7 +15,10 @@ import android.widget.Toast;
 import com.squareup.okhttp.Request;
 import com.wenxin.dongyouji.R;
 import com.wenxin.dongyouji.Url;
+import com.wenxin.dongyouji.activity.RaidersActivity;
+import com.wenxin.dongyouji.activity.TravelNotesActivity;
 import com.wenxin.dongyouji.adapter.RaidersAdapter;
+import com.wenxin.dongyouji.listener.RecyclerItemClickListener;
 import com.wenxin.dongyouji.model.RaidersModel;
 import com.wenxin.dongyouji.model.TravelNotesModel;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -34,17 +38,20 @@ public class RaidersFragment extends Fragment {
     private RecyclerView recyclerView;
     private RaidersAdapter adapter;
     private LinearLayoutManager linearLayoutManager;
+    private List<RaidersModel> mLists;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_raider, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        adapter = new RaidersAdapter();
-        List<RaidersModel> lists = new ArrayList<RaidersModel>();
+        adapter = new RaidersAdapter(getActivity());
+        linearLayoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(adapter);
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), onItemClickListener));
 
-
-        String url = Url.url + "get_all_travel_notes";
+        String url = Url.url + "get_all_raiders";
         OkHttpUtils
                 .get()
                 .url(url)
@@ -59,63 +66,67 @@ public class RaidersFragment extends Fragment {
                     @Override
                     public void onResponse(String response) {
 
-                        List<TravelNotesModel> list = new ArrayList<TravelNotesModel>();
-
+                        List<RaidersModel> lists = new ArrayList<RaidersModel>();
                         try {
                             JSONArray jsonArray = new JSONArray(response);
                             for (int i = 0; i < jsonArray.length(); i++) {
 
-                                TravelNotesModel travelNotesModel = new TravelNotesModel(
+                                RaidersModel raidersModel = new RaidersModel(
                                         jsonArray.getJSONObject(i).optString("title"),
-                                        jsonArray.getJSONObject(i).optString("date"),
+                                        jsonArray.getJSONObject(i).optString("description"),
+                                        jsonArray.getJSONObject(i).optString("details_description"),
                                         jsonArray.getJSONObject(i).optString("background"),
                                         jsonArray.getJSONObject(i).optString("text1"),
                                         jsonArray.getJSONObject(i).optString("img1"),
-                                        jsonArray.getJSONObject(i).optString("text2")
+                                        jsonArray.getJSONObject(i).optString("text2"),
+                                        jsonArray.getJSONObject(i).optString("img2"),
+                                        jsonArray.getJSONObject(i).optString("text3"),
+                                        jsonArray.getJSONObject(i).optString("img3")
                                 );
 
-                                list.add(travelNotesModel);
+                                lists.add(raidersModel);
 
                             }
 
-                            adapter.refreshList(list);
-                            mList = list;
+                            mLists = lists;
+                            adapter.refreshList(lists);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
 
                     }
                 });
 
 
-        RaidersModel a1 = new RaidersModel();
-        a1.setTitle("日本\nJAPAN");
-        a1.setCount("1010旅行地");
 
-        RaidersModel a2 = new RaidersModel();
-        a2.setTitle("日本\nJAPAN");
-        a2.setCount("1010旅行地");
 
-        RaidersModel a3 = new RaidersModel();
-        a3.setTitle("日本\nJAPAN");
-        a3.setCount("1010旅行地");
 
-        lists.add(a1);
-        lists.add(a2);
-        lists.add(a3);
-        lists.add(a1);
-        lists.add(a2);
-        lists.add(a3);
-
-        linearLayoutManager = new LinearLayoutManager(getActivity());
-
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(adapter);
-        adapter.refreshList(lists);
 
         return view;
     }
 
+    private RecyclerItemClickListener.OnItemClickListener onItemClickListener = new RecyclerItemClickListener.OnItemClickListener() {
+        @Override
+        public void onItemClick(View view, int position) {
+
+            if (position == mLists.size()){
+                return;
+            }
+
+            Intent intent = new Intent(getActivity(), RaidersActivity.class);
+            intent.putExtra("title", mLists.get(position).getTitle());
+            intent.putExtra("description",mLists.get(position).getDescription());
+            intent.putExtra("details_description",mLists.get(position).getDetails_description());
+            intent.putExtra("background",mLists.get(position).getBackground());
+            intent.putExtra("text1",mLists.get(position).getText1());
+            intent.putExtra("img1",mLists.get(position).getImg1());
+            intent.putExtra("text2",mLists.get(position).getText2());
+            intent.putExtra("img2",mLists.get(position).getImg2());
+            intent.putExtra("text3",mLists.get(position).getText3());
+            intent.putExtra("img3",mLists.get(position).getImg3());
+
+            startActivity(intent);
+        }
+    };
 
 }

@@ -25,6 +25,7 @@
         <activity android:name=".activity.LikeArticleActivity"/>
         <activity android:name=".activity.FeedBackActivity"/>
         <activity android:name=".activity.MeActivity"/>
+        <activity android:name=".activity.RaidersActivity"/>
     </application>
 
 </manifest>

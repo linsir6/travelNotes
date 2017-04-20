@@ -20,5 +20,7 @@ public class TravelNotesActivity extends AppCompatActivity {
         int i = intent.getExtras().getInt("id");
         Toast.makeText(TravelNotesActivity.this, "您点击的是" + i, Toast.LENGTH_SHORT).show();
 
+
+
     }
 }

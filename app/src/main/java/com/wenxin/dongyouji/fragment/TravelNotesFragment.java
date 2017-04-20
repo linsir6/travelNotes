@@ -107,6 +107,24 @@ public class TravelNotesFragment extends Fragment {
         public void onItemClick(View view, int position) {
             Intent intent = new Intent(getActivity(), TravelNotesActivity.class);
             intent.putExtra("title", mList.get(position).getTitle());
+            intent.putExtra("date",mList.get(position).getDate());
+            intent.putExtra("background",mList.get(position).getBackground());
+            intent.putExtra("text1",mList.get(position).getText1());
+            intent.putExtra("img1",mList.get(position).getImg1());
+            intent.putExtra("text2",mList.get(position).getText2());
+
+
+
+
+
+
+
+
+
+
+
+
+
             startActivity(intent);
         }
     };
